@@ -55,68 +55,17 @@
                             <th scope="col">E-mail</th>
                           </tr>
                         </thead>
+                        <!-- JS PARA PERCORER O ARRAY -->
+                        <% rotas.forEach(function(rota){ %>
                         <tbody>
                           <tr>
-                            <th scope="row">14th Apr. (am)</th>
-                            <td>Ann Friel<br>Andrew Whiteside</td>
-                            <td>087-9694513<br>085-1200671</td>
-                            <td>annfriel61@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">21st Apr. (am)</th>
-                            <td>Marcelo<br>Claudia Castro</td>
-                            <td>083-8197169<br>083-8197967</td>
-                            <td>marcelohenriques@gmail.com<br>claudiadscastro@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">28th Apr. (am)</th>
-                            <td>Graeme Murdock<br>Barbara Lamb</td>
-                            <td>086-8720066<br>086-8880691</td>
-                            <td>murdocg@tcd.ie<br>barbaraflamb@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5th May (am)</th>
-                            <td>Raymond &<br>Colette McCaw</td>
-                            <td>085-8118899<br>086-2128859</td>
-                            <td>raymond.mccaw@yahoo.ie</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">12th May (am)</th>
-                            <td>Stuart Ferguson<br>Martha McMillan</td>
-                            <td>086-6860537<br>087-6694004</td>
-                            <td>stuartfer@gmail.com<br>marthafinan@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">19th May (am)</th>
-                            <td>David Boyd<br>Rosaleen Gibson</td>
-                            <td>086-8346064<br>087-9060206</td>
-                            <td>davidboyd@eircom.net<br>rosaleengibson@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">26th May (am)</th>
-                            <td>Ian Black<br>Morgan McCreedy</td>
-                            <td>086-3874031<br>086-8880691</td>
-                            <td>ian.black@repak.ie<br>jmaxi2002@yahoo.co.uk</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2nd Jun. (am)</th>
-                            <td>Annie Patton<br>Marion Stott</td>
-                            <td>087-9892033<br>087-2929690</td>
-                            <td>anniepatton@hotmail.com<br>mabstott@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">9th Jun. (am)</th>
-                            <td>Tommy <br> Jennifer Wilson</td>
-                            <td>086-3868848</td>
-                            <td>tommyjenniferwilson@gmail.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">16th Jun. (am)</th>
-                            <td>Ken & Mary Borland<br>Rebecca Smith</td>
-                            <td>086-2529980<br>086-6026775</td>
-                            <td>kborland@iol.ie<br>rebeccaborland@yahoo.com</td>
+                            <th scope="row"><%= rota.date %></th>
+                            <td><%= rota.name %></td>
+                            <td><%= rota.tel %></td>
+                            <td><%= rota.email %></td>
                           </tr>
                         </tbody>
+                        <% }); %> <!-- END LOOP forEach -->
                       </table><!-- END TABLE SUNDAY -->
                     </div><br>
                       <h4 class="lead">N.B.  If you are not available to attend on your specific day please change 
