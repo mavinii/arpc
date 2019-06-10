@@ -1,7 +1,19 @@
-var express = require("express"); 
-var app = express();
-var bodyParser = require("body-parser");
-var port = 3000 //port server
+const express = require('express'); 
+const app = express();
+var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+var port = 3000 //port server 
+
+// connection to data base
+mongoose.connect('mongodb+srv://pgmarcosoliveira:KGZ5vhRVN!ZAiW!@cluster0-jqh2a.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useCreateIndex: true
+}).then(() => {
+    console.log('Connected to DB!');
+}).catch(err => {
+    console.log('ERROR:', err.message);
+});
 
 app.use(express.static("public"));      //para o express enchergar meu CSS da pgn public
 app.use(bodyParser.urlencoded({extended: true}));
