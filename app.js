@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 var port = 3000 //port server 
 
 // connection to data base
-mongoose.connect('mongodb+srv://pgmarcosoliveira:KGZ5vhRVN!ZAiW!@cluster0-jqh2a.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://pgmarcosoliveira:<passworld>@cluster0-jqh2a.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
