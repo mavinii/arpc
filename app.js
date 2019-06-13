@@ -1,12 +1,12 @@
-const express = require('express'); 
-const app = express();
-var bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express   = require('express'); 
+const app       = express();
+var bodyParser  = require('body-parser');
+const mongoose  = require('mongoose');
 
 var port = 3000 //port server 
 
-// connection to data base
-mongoose.connect('mongodb+srv://pgmarcosoliveira:KGZ5vhRVN!ZAiW!@cluster0-jqh2a.mongodb.net/test?retryWrites=true&w=majority', {
+// Connection to data base
+mongoose.connect('mongodb+srv://pgmarcosoliveira:<passworld>@cluster0-jqh2a.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
@@ -19,11 +19,29 @@ app.use(express.static("public"));      //para o express enchergar meu CSS da pg
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");          //no .ejs needed
 
-//provisorio porque usaremos banco de dados
-var rotas = [
-    {date: "14th apr", name: "Ann and Andrew", tel: "087-9694513", email:"annfriel61@gmail.com"},
-    {date: "20th apr", name: "Marcos and Aline", tel: "000-123456", email:"miltretamano@seila.com"}
-];
+// SUNDAY Schema SETUP
+var sundaySchema = new mongoose.Schema({
+    date: String,
+    name: String,
+    tel: String,
+    email: String
+});
+
+var Sunday = mongoose.model("Sunday", sundaySchema);
+// Sunday.create(  USAR ESSE COD PARA TESTAR OUTRAS ROTAS
+//     {
+//         date: "20th apr", 
+//         name: "Aline and Marcos", 
+//         tel: "000-00000", 
+//         email:"seila@seila.ie"
+//     }, function(err, sunday){
+//         if(err){
+//             console.log(err);
+//         } else{
+//             console.log("NEw Sunday Created: ");
+//             console.log(sunday);
+//         }
+//     });
  
 //APP.JS MAIN PAGE NOT INDEX.ejs
 app.get('/', function(req, res){
@@ -60,7 +78,14 @@ app.get('/events', function(req, res){
 
 //ROTAS
 app.get('/rota', function(req, res){
-    res.render("rota", {rotas:rotas});
+    //Get all rotas from DB
+    Sunday.find({}, function(err, allSunday){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("rota", {rotas:allSunday});
+        }
+    })
 });
 
 // IMPORTANT METHOD POST
@@ -70,10 +95,16 @@ app.post('/rota', function(req, res){
     var name  = req.body.name;
     var tel = req.body.tel;
     var email = req.body.email;
-    var newRota = {date: date, name: name, tel: tel, email: email}
-    rotas.push(newRota);
-    //redirect back to compgrounds page
-    // res.redirect("/rota/painel");
+    var newSunday = {date: date, name: name, tel: tel, email: email}
+    //Create a new SUNDAY and save to DB
+    Sunday.create(newSunday, function(err, newlySundayCreated){
+        if(err){
+            console.log(err)
+        } else{
+            //redirect back to compgrounds page
+            // res.redirect("/rota/painel");
+        }
+    })
 });
 
 // LOGIN ACEPT REDIRECT TO PAINEL

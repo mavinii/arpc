@@ -9,3 +9,8 @@
 
 # Database
 *Installing MongoDB
+
+# Add Mongoose
+*Install and configure mongoose
+*Setup painel model
+*Use painel model inside of our routes
