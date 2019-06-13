@@ -6,8 +6,6 @@
 # login
 *Creat a login page
 
-==================================================================
-
 # Database
 *Installing MongoDB
 
