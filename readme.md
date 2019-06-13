@@ -1,9 +1,9 @@
-# painel
+# /painel
 *form for add some information and send this information to /rota
 *Creat a button for login
 *Creat a pop up with jQuery when click bottun 'Submit!' 
 
-# login
+# /login
 *Creat a login page
 
 # Database
